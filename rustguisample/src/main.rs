@@ -69,7 +69,15 @@ impl Application for GUI {
      */
     fn update(&mut self, message: Self::Message) -> Command<Self::Message> {
         // メッセージを受信した時の処理
-        
+        match message {
+            Message::Start => {
+                self.tick_state = TickState::Ticking;
+            }
+            Message::Stop => {
+                self.tick_state = TickState::Stopped;
+            }
+            Message::Reset => {}
+        }
         Command::none();
     }
 
