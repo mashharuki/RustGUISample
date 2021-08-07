@@ -7,6 +7,7 @@ use iced::{
     HorizontalAlignment, Length, Row, Settings, Subscription,
 };
 use iced::Settings;
+use iced_native::Widget;
 
 struct GUI {
     start_stop_button_state: button::State,
@@ -24,7 +25,10 @@ impl Application for GUI {
      * 初期化用のメソッド
      */
     fn new(flags: Self::Flags) -> (Self, Command<Self::Message>) {
-        (GUI, Command::none());
+        (GUI {
+            start_stop_button_state: button::State::new(),
+            reset_button_state: button::State::new(),
+        }, Command::none());
     }
 
     /**
@@ -45,7 +49,39 @@ impl Application for GUI {
      * ウィンドウに表示するウィジットを設定するメソッド
      */
     fn view(&mut self) -> Element<'_, Self::Message> {
-        Text::new("Hello, World!").into();
+        // ウィジットを初期化する。
+        let tick_text = Text::new("00:00:00.00").font(FONT).size(60);
+        // 開始ボタンの定義
+        let start_stop_button = Button::new(
+            &mut self.start_stop_button_state,
+            Text::new("Start")
+                        .horizontal_alignment(HorizontalAlignment::Center)
+                        .font(FONT),
+        )
+        .min_width(80);
+        // リセットボタンの定義
+        let reset_button = Button::new(
+            &mut self.reset_button_state,
+            Text::new("Reset")
+                        .horizontal_alignment(HorizontalAlignment::Center)
+                        .font(FONT),
+        )
+        .min_width(80);
+        // カラムを用意する
+        Column::new()
+            .push(tick_text)
+            .push(
+                Row::new()
+                        .push(start_stop_button)
+                        .push(reset_button)
+                        .spacing(10),
+            )
+            .spacing(10)
+            .padding(10)
+            .width(Length::Fill)
+            .height(Length::Fill)
+            .align_items(Align::Center)
+            .into()
     }
 }
 
