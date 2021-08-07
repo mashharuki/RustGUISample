@@ -47,10 +47,14 @@ impl Application for GUI {
      * 初期化用のメソッド
      */
     fn new(flags: Self::Flags) -> (Self, Command<Self::Message>) {
-        (GUI {
-            start_stop_button_state: button::State::new(),
-            reset_button_state: button::State::new(),
-        }, Command::none());
+        (
+            GUI {
+                start_stop_button_state: button::State::new(),
+                reset_button_state: button::State::new(),
+                tick_state: TickState::Stopped,
+            }, 
+            Command::none()
+        );
     }
 
     /**
@@ -64,6 +68,8 @@ impl Application for GUI {
      * アプリケーションの状態を表示するメソッド
      */
     fn update(&mut self, message: Self::Message) -> Command<Self::Message> {
+        // メッセージを受信した時の処理
+        
         Command::none();
     }
 
@@ -78,7 +84,7 @@ impl Application for GUI {
             &mut self.start_stop_button_state,
             Text::new("Start")
                         .horizontal_alignment(HorizontalAlignment::Center)
-                        .font(FONT),
+                        .font(Font),
         )
         .min_width(80);
         // リセットボタンの定義
@@ -86,7 +92,7 @@ impl Application for GUI {
             &mut self.reset_button_state,
             Text::new("Reset")
                         .horizontal_alignment(HorizontalAlignment::Center)
-                        .font(FONT),
+                        .font(Font),
         )
         .min_width(80);
         // カラムを用意する
@@ -103,7 +109,43 @@ impl Application for GUI {
             .width(Length::Fill)
             .height(Length::Fill)
             .align_items(Align::Center)
-            .into()
+            .into();
+
+        // 経過時刻を表示するための変数を用意する。
+        let duration_text = "00:00:00.00";
+        // 開始＆停止時のテキストを用意する。
+        let start_stop_text = match self.tick_state {
+            // 停止時の定義
+            TickState::Stopped => Text::new("Start")
+                                        .horizontal_alignment(HorizontalAlignment::Center)
+                                        .font(Font),
+            // 経過中の定義
+            TickState::Ticking => Text::new("Stop")
+                                        .horizontal_alignment(HorizontalAlignment::Center)
+                                        .font(Font),
+        };
+
+        // ボタンに表示するためのテキストを用意する。
+        let start_stop_message = match self.tick_state {
+            TickState::Stopped => Message::Start,
+            TickState::Ticking => Message::Stop,
+        };
+
+        // ウィジットを初期化する。
+        let tick_text = Text::new(duration_text).font(Font).size(60);
+        // 開始ボタン用のウィジットを用意する。
+        let start_stop_button = Button::new(&mut self.start_stop_button_state, start_stop_text)
+                                                            .min_width(80)
+                                                            .on_press(start_stop_message);
+        // リセットボタン用のウィジットを用意する。
+        let reset_button = Button::new(&mut self.reset_button_state, 
+                                                        Text::new("Reset")
+                                                                    .horizontal_alignment(HorizontalAlignment::Center)
+                                                                    .font(Font)
+                                                            )
+                                                            .min_width(80)
+                                                            .on_press(Message::Reset);
+        
     }
 }
 
