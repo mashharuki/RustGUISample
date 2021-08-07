@@ -1,0 +1,9 @@
+/Users/harukikondo/git/RustGUISample/rustguisample/target/debug/deps/unicode_segmentation-cc4e6db209f0be81.rmeta: /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/lib.rs /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/grapheme.rs /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/tables.rs /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/word.rs /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/sentence.rs
+
+/Users/harukikondo/git/RustGUISample/rustguisample/target/debug/deps/unicode_segmentation-cc4e6db209f0be81.d: /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/lib.rs /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/grapheme.rs /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/tables.rs /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/word.rs /Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/sentence.rs
+
+/Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/lib.rs:
+/Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/grapheme.rs:
+/Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/tables.rs:
+/Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/word.rs:
+/Users/harukikondo/.cargo/registry/src/github.com-1ecc6299db9ec823/unicode-segmentation-1.8.0/src/sentence.rs:
