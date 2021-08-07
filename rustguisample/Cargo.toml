@@ -8,3 +8,4 @@ edition = "2018"
 [dependencies]
 iced = { version = "0.1.1", features = ["async-std"] }
 iced_native = "0.2.2"
+iced_futures = "0.1.2"
