@@ -2,10 +2,16 @@
  * アプリケーションの基盤となるメインファイル
  */
 
-use iced::{ executor, Application, Command, Element, Text };
+use iced::{ 
+    button, executor, Align, Application, Button, Column, Command, Element, Font, Text
+    HorizontalAlignment, Length, Row, Settings, Subscription,
+};
 use iced::Settings;
 
-struct GUI;
+struct GUI {
+    start_stop_button_state: button::State,
+    reset_button_state: button::State,
+}
 
 // GUIにApplicationトレイトを実装する。
 impl Application for GUI {  
