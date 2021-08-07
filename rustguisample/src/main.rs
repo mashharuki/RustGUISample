@@ -9,10 +9,17 @@ use iced::{
 use iced::Settings;
 use iced_native::Widget;
 
+// 構造体GUIを定義
 struct GUI {
     start_stop_button_state: button::State,
     reset_button_state: button::State,
 }
+
+// フォント用の変数を定義
+const FONT: Font = Font::External {
+    name: "PixelMplus12-Regular",
+    bytes: include_bytes!("../rsc/PixelMplus12-Regular.ttf"),
+};
 
 // GUIにApplicationトレイトを実装する。
 impl Application for GUI {  
@@ -89,6 +96,10 @@ impl Application for GUI {
  * メイン関数
  */
 fn main() {
+    // 設定用の変数を定義する。
+    let mut settings = Settings::default();
+    // ウィンドウの大きさを調整する。
+    settings.window.size = (400u32, 120u32);
     // run関数を呼び出す。
-    GUi::run(Settings::default());
+    GUI::run(Settings::default());
 }
