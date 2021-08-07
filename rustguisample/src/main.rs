@@ -9,23 +9,38 @@ use iced::{
 use iced::Settings;
 use iced_native::Widget;
 
-// 構造体GUIを定義
-struct GUI {
-    start_stop_button_state: button::State,
-    reset_button_state: button::State,
-}
-
 // フォント用の変数を定義
 const FONT: Font = Font::External {
     name: "PixelMplus12-Regular",
     bytes: include_bytes!("../rsc/PixelMplus12-Regular.ttf"),
 };
 
+// メッセージを定義する
+#[derive(Debug, Clone)]
+pub enum Message {
+    Start,
+    Stop,
+    Reset,
+} 
+
+// TickStateを定義する
+pub enum TickState {
+    Stopped,
+    Ticking,
+}
+
+// 構造体GUIを定義
+struct GUI {
+    start_stop_button_state: button::State,
+    reset_button_state: button::State,
+    tick_state: TickState,
+}
+
 // GUIにApplicationトレイトを実装する。
 impl Application for GUI {  
     // ぞれぞれ変数を用意する。
     type Executor = executor::Null;
-    type Message = ();
+    type Message = Message;
     type Flags = ();
 
     /**
